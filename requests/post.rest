@@ -1,0 +1,7 @@
+POST http://localhost:3001/api/homes
+Content-Type: application/json
+
+{
+    "id": 4,
+    "description": "Belmont shack"
+}
