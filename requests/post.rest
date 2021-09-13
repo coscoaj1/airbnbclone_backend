@@ -3,5 +3,8 @@ Content-Type: application/json
 
 {
     "id": 4,
-    "description": "Belmont shack"
+    "description": "Belmont shack",
+    "owner": "old lady",
+    "rating": 4,
+    "pictureUrl": "www.google.com"
 }

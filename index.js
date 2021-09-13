@@ -1,7 +1,8 @@
-const { response } = require('express');
+require('dotenv').config();
 const express = require('express');
 const app = express();
 const morgan = require('morgan');
+const Home = require('./models/home');
 
 app.use(express.json());
 app.use(morgan('tiny'));
@@ -26,20 +27,41 @@ app.get('/', (request, response) => {
 });
 
 app.get('/api/homes', (request, response) => {
-	response.json(homes);
+	Home.find({}).then((homes) => {
+		response.json(homes);
+	});
 });
 
 app.get('/api/homes/:id', (request, response) => {
-	const id = Number(request.params.id);
-	console.log(id);
-	const home = homes.find((home) => home.id === id);
-	response.json(home);
+	Home.findById({ _id: request.params.id })
+		.then((result) => {
+			response.json(result);
+		})
+		.catch((error) => next(error));
 });
 
-app.post('/api/homes', (request, response) => {
-	const home = request.body;
-	console.log(home);
-	response.json(home);
+app.post('/api/homes', (request, response, next) => {
+	const body = request.body;
+
+	if (!body.description || !body) {
+		return response.status(400).json({
+			error: 'content missing',
+		});
+	}
+
+	const home = new Home({
+		id: body.id,
+		description: body.description,
+		owner: body.ownder,
+		rating: body.rating,
+		pictureUrl: body.pictureUrl,
+	});
+	home
+		.save()
+		.then((savedHome) => {
+			response.json(savedHome);
+		})
+		.catch((error) => next(error));
 });
 
 const unknownEndpoint = (request, response) => {
