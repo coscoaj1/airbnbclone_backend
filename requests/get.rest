@@ -2,4 +2,5 @@ GET http://localhost:3001/api/homes
 
 ###
 
-GET http://localhost:3001/api/homes/1
+
+GET http://localhost:3001/api/homes/613f19ef4a9323706485d870
