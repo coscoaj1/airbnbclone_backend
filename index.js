@@ -50,7 +50,6 @@ app.post('/api/homes', (request, response, next) => {
 	}
 
 	const home = new Home({
-		id: body.id,
 		description: body.description,
 		owner: body.ownder,
 		rating: body.rating,

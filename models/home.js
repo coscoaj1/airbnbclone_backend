@@ -13,10 +13,6 @@ mongoose
 	});
 
 const homeSchema = new mongoose.Schema({
-	id: {
-		type: Number,
-	},
-
 	description: {
 		type: String,
 	},
@@ -31,6 +27,14 @@ const homeSchema = new mongoose.Schema({
 
 	pictureUrl: {
 		type: String,
+	},
+});
+
+homeSchema.set('toJSON', {
+	transform: (document, returnedObject) => {
+		returnedObject.id = returnedObject._id.toString();
+		delete returnedObject._id;
+		delete returnedObject.__v;
 	},
 });
 

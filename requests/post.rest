@@ -2,9 +2,8 @@ POST http://localhost:3001/api/homes
 Content-Type: application/json
 
 {
-    "id": 4,
-    "description": "Belmont shack",
+    "description": "Crack House",
     "owner": "old lady",
-    "rating": 4,
+    "rating": 1,
     "pictureUrl": "www.google.com"
 }
