@@ -1,28 +1,15 @@
 const mongoose = require('mongoose');
-const url = process.env.MONGODB_URI;
-
-console.log('connecting to', url);
-
-mongoose
-	.connect(url)
-	.then((result) => {
-		console.log('connected to MongoDB');
-	})
-	.catch((error) => {
-		console.log('error connecting to MongoDB:', error.message);
-	});
 
 const homeSchema = new mongoose.Schema({
-	id: {
-		type: Number,
-	},
-
 	description: {
 		type: String,
+		minLength: 5,
+		required: true,
 	},
 
 	owner: {
 		type: String,
+		required: true,
 	},
 
 	rating: {
@@ -31,6 +18,15 @@ const homeSchema = new mongoose.Schema({
 
 	pictureUrl: {
 		type: String,
+		required: true,
+	},
+});
+
+homeSchema.set('toJSON', {
+	transform: (document, returnedObject) => {
+		returnedObject.id = returnedObject._id.toString();
+		delete returnedObject._id;
+		delete returnedObject.__v;
 	},
 });
 

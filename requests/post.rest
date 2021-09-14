@@ -2,9 +2,16 @@ POST http://localhost:3001/api/homes
 Content-Type: application/json
 
 {
-    "id": 4,
-    "description": "Belmont shack",
-    "owner": "old lady",
-    "rating": 4,
+    "description": "run down shack",
+    "owner": "old man",
+    "rating": 3,
     "pictureUrl": "www.google.com"
 }
+###
+PUT http://localhost:3001/api/homes/613f208967875042e632b48b
+Content-Type: application/json
+
+{
+    "description": "hellhole",
+    "rating": 4
+}   
