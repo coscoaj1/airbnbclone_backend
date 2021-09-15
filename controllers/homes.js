@@ -1,5 +1,6 @@
 const homesRouter = require('express').Router();
 const Home = require('../models/home');
+const { uploadFile } = require('./utils/s3');
 
 homesRouter.get('/', (request, response) => {
 	Home.find({}).then((homes) => {
@@ -21,6 +22,19 @@ homesRouter.get('/:id', (request, response) => {
 			response.status(400).send({ error: 'malformatted id ' });
 		});
 });
+
+homesRouter.post(
+	'/images',
+	upload.single('image'),
+	async (request, response) => {
+		const file = req.file;
+		console.log(file);
+		const result = await uploadFile(file);
+		console.log(result);
+		const description = request.body.description;
+		response.send('👍');
+	}
+);
 
 homesRouter.post('/', (request, response, next) => {
 	const body = request.body;
