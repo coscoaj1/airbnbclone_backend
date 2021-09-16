@@ -1,5 +1,8 @@
 const homesRouter = require('express').Router();
 const Home = require('../models/home');
+const { uploadFile, getFileStream } = require('./../utils/s3');
+const multer = require('multer');
+const upload = multer({ dest: 'uploads/' });
 
 homesRouter.get('/', (request, response) => {
 	Home.find({}).then((homes) => {
@@ -21,6 +24,26 @@ homesRouter.get('/:id', (request, response) => {
 			response.status(400).send({ error: 'malformatted id ' });
 		});
 });
+
+homesRouter.get('/images/:key', (request, response) => {
+	const key = request.params.key;
+	const readStream = getFileStream(key);
+
+	readStream.pipe(response);
+});
+
+homesRouter.post(
+	'/images',
+	upload.single('image'),
+	async (request, response) => {
+		const file = request.file;
+		console.log(file);
+		const result = await uploadFile(file);
+		console.log(result);
+		const description = request.body.description;
+		response.send({ imagePath: `images/${result.Key}` });
+	}
+);
 
 homesRouter.post('/', (request, response, next) => {
 	const body = request.body;
