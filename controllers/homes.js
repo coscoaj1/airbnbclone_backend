@@ -4,6 +4,10 @@ const { uploadFile, getFileStream } = require('./../utils/s3');
 const multer = require('multer');
 const upload = multer({ dest: 'uploads/' });
 
+const fs = require('fs');
+const util = require('util');
+const unlinkFile = util.promisify(fs.unlink);
+
 homesRouter.get('/', (request, response) => {
 	Home.find({}).then((homes) => {
 		response.json(homes);
@@ -35,13 +39,25 @@ homesRouter.get('/images/:key', (request, response) => {
 homesRouter.post(
 	'/images',
 	upload.single('image'),
-	async (request, response) => {
+	async (request, response, next) => {
+		const body = request.body;
 		const file = request.file;
 		console.log(file);
 		const result = await uploadFile(file);
+		await unlinkFile(file.path);
 		console.log(result);
-		const description = request.body.description;
-		response.send({ imagePath: `images/${result.Key}` });
+		const newUrl = result.Location;
+
+		// upload to mongoDB
+		const home = new Home({
+			description: body.description,
+			owner: body.owner,
+			rating: body.rating,
+			pictureUrl: newUrl,
+		});
+		home.save().then((savedHome) => {
+			response.json(savedHome);
+		});
 	}
 );
 

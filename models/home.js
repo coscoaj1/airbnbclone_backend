@@ -9,7 +9,7 @@ const homeSchema = new mongoose.Schema({
 
 	owner: {
 		type: String,
-		required: true,
+		required: false,
 	},
 
 	rating: {
