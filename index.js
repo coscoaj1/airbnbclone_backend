@@ -5,11 +5,6 @@ const config = require('./utils/config');
 
 const server = http.createServer(app);
 
-const unknownEndpoint = (request, response) => {
-	response.status(404).send({ error: 'unknown endpoint' });
-};
-
-const PORT = 3001;
-server.listen(PORT, () => {
+server.listen(config.PORT, () => {
 	logger.info(`Server running on port ${config.PORT}`);
 });

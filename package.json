@@ -4,9 +4,9 @@
 	"description": "",
 	"main": "index.js",
 	"scripts": {
-		"start": "node index.js",
-		"dev": "nodemon index.js",
-		"test": "jest --verbose --runInBand"
+		"start": "cross-env NODE_ENV=production node index.js",
+		"dev": "cross-env NODE_ENV=development nodemon index.js",
+		"test": "cross-env NODE_ENV=test jest --watchAll --verbose --runInBand "
 	},
 	"author": "",
 	"license": "ISC",
@@ -17,12 +17,13 @@
 		"express": "^4.17.1",
 		"fs": "^0.0.1-security",
 		"jest": "^27.2.0",
-		"mongoose": "^6.0.5",
+		"mongoose": "^5.13.5",
 		"morgan": "^1.10.0",
 		"multer": "^1.4.3",
 		"supertest": "^6.1.6"
 	},
 	"devDependencies": {
+		"cross-env": "^7.0.3",
 		"nodemon": "^2.0.12"
 	}
 }

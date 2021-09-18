@@ -14,19 +14,14 @@ homesRouter.get('/', (request, response) => {
 	});
 });
 
-homesRouter.get('/:id', (request, response) => {
-	Home.findById({ _id: request.params.id })
-		.then((home) => {
-			if (home) {
-				response.json(home);
-			} else {
-				response.status(404).end();
-			}
-		})
-		.catch((error) => {
-			console.log(error);
-			response.status(400).send({ error: 'malformatted id ' });
-		});
+homesRouter.get('/:id', async (request, response, next) => {
+	const home = await Home.findById(request.params.id);
+
+	if (home) {
+		response.json(home);
+	} else {
+		response.status(404).end();
+	}
 });
 
 homesRouter.get('/images/:key', (request, response) => {
@@ -42,10 +37,8 @@ homesRouter.post(
 	async (request, response, next) => {
 		const body = request.body;
 		const file = request.file;
-		console.log(file);
 		const result = await uploadFile(file);
 		await unlinkFile(file.path);
-		console.log(result);
 		const newUrl = result.Location;
 
 		// upload to mongoDB
@@ -58,7 +51,7 @@ homesRouter.post(
 
 		const savedHome = await home.save();
 		response.json(savedHome);
-		response.status(200);
+		response.status(201);
 
 		// home.save().then((savedHome) => {
 		// 	response.json(savedHome);
@@ -66,7 +59,7 @@ homesRouter.post(
 	}
 );
 
-homesRouter.post('/', (request, response, next) => {
+homesRouter.post('/', async (request, response, next) => {
 	const body = request.body;
 
 	if (!body.description || !body) {
@@ -81,12 +74,9 @@ homesRouter.post('/', (request, response, next) => {
 		rating: body.rating,
 		pictureUrl: body.pictureUrl,
 	});
-	home
-		.save()
-		.then((savedHome) => {
-			response.json(savedHome);
-		})
-		.catch((error) => next(error));
+
+	const savedHome = await home.save();
+	response.json(savedHome);
 });
 
 homesRouter.delete('/:id', (request, response, next) => {
