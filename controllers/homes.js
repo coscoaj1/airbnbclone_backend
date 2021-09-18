@@ -55,9 +55,14 @@ homesRouter.post(
 			rating: body.rating,
 			pictureUrl: newUrl,
 		});
-		home.save().then((savedHome) => {
-			response.json(savedHome);
-		});
+
+		const savedHome = await home.save();
+		response.json(savedHome);
+		response.status(200);
+
+		// home.save().then((savedHome) => {
+		// 	response.json(savedHome);
+		// });
 	}
 );
 
