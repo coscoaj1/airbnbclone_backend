@@ -2,35 +2,41 @@ POST http://localhost:3001/api/homes
 Content-Type: application/json
 
 {
-    "title": "Lakefront Home! Private dock and hot tub!",
-    "description": "Entire residential home in McHenry",
+    "title": "Split Lakefront Home w/Hot Tub, Private Dock, & Fire Pit!",
+    "description": "Entire Chalet in Swanton",
     "owner": "Lakehouse Lady",
-    "rating": 5,
-    "pictureUrl": "https://airbnbcloneapp.s3.amazonaws.com/da6f797553f48a04fabe7db2bbe15ec1",
-    "price": 361,
-    "bedrooms": 3,
-    "beds": 6,
-    "baths": 2.5,
+    "rating": 4.6,
+    "pictureUrl": "https://airbnbcloneapp.s3.amazonaws.com/1237179fb1b4446fa6ba6d67c0bc2218",
+    "price": 385,
+    "bedrooms": 4,
+    "beds": 7,
+    "baths": 3,
     "kitchens": 1,
-    "guests": 8,
-    "reviews": 6
+    "guests": 12,
+    "reviews": 2,
+    "wifi": true,
+    "Air_Conditioning": true,
+    "Free parking": true
 }
 
 ###
-PUT http://localhost:3001/api/homes/616c7fcf6f603de6ff9192c4
+PUT http://localhost:3001/api/homes/616cab92ec6152adf6c4ddad
 Content-Type: application/json
 
 {
-    "description": "Entire residential home in McHenry",
-    "title": "Cozy cabin-style home w/private hot tub",
-    "price": 361,
-    "bedrooms": 3,
-    "beds": 6,
-    "baths": 2.5,
+  "description": "Entire Chalet in Swanton",
+    "title": "Split Lakefront Home w/Hot Tub, Private Dock, & Fire Pit!",
+    "price": 385,
+    "bedrooms": 4,
+    "beds": 7,
+    "baths": 3,
     "kitchens": 1,
     "owner": "Lakehouse Lady",
-    "rating": 4.76,
-    "pictureUrl": "https://airbnbcloneapp.s3.amazonaws.com/0af5e7455994587837daa90a721025f7",
-    "guests": 8,
-    "reviews": 152
+    "rating": 4.6,
+    "pictureUrl": "https://airbnbcloneapp.s3.amazonaws.com/1237179fb1b4446fa6ba6d67c0bc2218",
+    "guests": 12,
+    "reviews": 2,
+    "wifi": true,
+    "air_conditioning": true,
+    "parking": true
 }   

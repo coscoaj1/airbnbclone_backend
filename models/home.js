@@ -55,6 +55,16 @@ const homeSchema = new mongoose.Schema({
 	reviews: {
 		type: Number,
 	},
+	wifi: {
+		type: Boolean,
+	},
+
+	air_conditioning: {
+		type: Boolean,
+	},
+	parking: {
+		type: Boolean,
+	},
 });
 
 homeSchema.set('toJSON', {

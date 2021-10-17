@@ -67,6 +67,9 @@ homesRouter.post('/', (request, response, next) => {
 		kitchens: body.kitchens,
 		guests: body.guests,
 		reviews: body.reviews,
+		wifi: body.wifi,
+		air_conditioning: body.air_conditioning,
+		parking: body.parking,
 	});
 	home
 		.save()
@@ -100,6 +103,9 @@ homesRouter.put('/:id', (request, response, next) => {
 		kitchens: body.kitchens,
 		guests: body.guests,
 		reviews: body.reviews,
+		wifi: body.wifi,
+		air_conditioning: body.air_conditioning,
+		parking: body.parking,
 	};
 
 	Home.findByIdAndUpdate(request.params.id, home, { new: true })
