@@ -2,10 +2,16 @@ POST http://localhost:3001/api/homes
 Content-Type: application/json
 
 {
-    "description": "Lake Tahoe Getaway",
+    "title": "Downtown Petite Retreat",
+    "description": "Entire townhouse in the City",
     "owner": "Lakehouse Lady",
     "rating": 5,
     "pictureUrl": "https://airbnbcloneapp.s3.amazonaws.com/pexels-pixabay-262405.jpg"
+    "price": "109",
+    "bedrooms": "3",
+    "beds": "4",
+    "baths": "2",
+    "kitchens": "1",
 }
 ###
 PUT http://localhost:3001/api/homes/613f208967875042e632b48b
