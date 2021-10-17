@@ -2,22 +2,35 @@ POST http://localhost:3001/api/homes
 Content-Type: application/json
 
 {
-    "title": "Downtown Petite Retreat",
-    "description": "Entire townhouse in the City",
+    "title": "Lakefront Home! Private dock and hot tub!",
+    "description": "Entire residential home in McHenry",
     "owner": "Lakehouse Lady",
     "rating": 5,
-    "pictureUrl": "https://airbnbcloneapp.s3.amazonaws.com/pexels-pixabay-262405.jpg"
-    "price": "109",
-    "bedrooms": "3",
-    "beds": "4",
-    "baths": "2",
-    "kitchens": "1",
+    "pictureUrl": "https://airbnbcloneapp.s3.amazonaws.com/da6f797553f48a04fabe7db2bbe15ec1",
+    "price": 361,
+    "bedrooms": 3,
+    "beds": 6,
+    "baths": 2.5,
+    "kitchens": 1,
+    "guests": 8,
+    "reviews": 6
 }
+
 ###
-PUT http://localhost:3001/api/homes/613f208967875042e632b48b
+PUT http://localhost:3001/api/homes/616c7fcf6f603de6ff9192c4
 Content-Type: application/json
 
 {
-    "description": "hellhole",
-    "rating": 4
+    "description": "Entire residential home in McHenry",
+    "title": "Cozy cabin-style home w/private hot tub",
+    "price": 361,
+    "bedrooms": 3,
+    "beds": 6,
+    "baths": 2.5,
+    "kitchens": 1,
+    "owner": "Lakehouse Lady",
+    "rating": 4.76,
+    "pictureUrl": "https://airbnbcloneapp.s3.amazonaws.com/0af5e7455994587837daa90a721025f7",
+    "guests": 8,
+    "reviews": 152
 }   
