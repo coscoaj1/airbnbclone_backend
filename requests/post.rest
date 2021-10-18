@@ -2,40 +2,40 @@ POST http://localhost:3001/api/homes
 Content-Type: application/json
 
 {
-    "title": "Split Lakefront Home w/Hot Tub, Private Dock, & Fire Pit!",
-    "description": "Entire Chalet in Swanton",
+    "title": "Modern Comfort and Design in Amazing Park!",
+    "description": "Entire Rental Unit",
     "owner": "Lakehouse Lady",
-    "rating": 4.6,
-    "pictureUrl": "https://airbnbcloneapp.s3.amazonaws.com/1237179fb1b4446fa6ba6d67c0bc2218",
-    "price": 385,
-    "bedrooms": 4,
-    "beds": 7,
-    "baths": 3,
+    "rating": 5,
+    "pictureUrl": "https://airbnbcloneapp.s3.amazonaws.com/594d286575a076fc0b883e9435e0010f",
+    "price": 198,
+    "bedrooms": 1,
+    "beds": 2,
+    "baths": 1,
     "kitchens": 1,
-    "guests": 12,
-    "reviews": 2,
+    "guests": 4,
+    "reviews": 86,
     "wifi": true,
-    "Air_Conditioning": true,
-    "Free parking": true
+    "air_conditioning": true,
+    "parking": true
 }
 
 ###
-PUT http://localhost:3001/api/homes/616cab92ec6152adf6c4ddad
+PUT http://localhost:3001/api/homes/616db59baece201984a3fbf7
 Content-Type: application/json
 
 {
-  "description": "Entire Chalet in Swanton",
-    "title": "Split Lakefront Home w/Hot Tub, Private Dock, & Fire Pit!",
-    "price": 385,
-    "bedrooms": 4,
-    "beds": 7,
-    "baths": 3,
-    "kitchens": 1,
+    "title": "Beach Guest House, Bikes + Jacuzzi",
+    "description": "Entire Guest House in Mission Beach",
     "owner": "Lakehouse Lady",
-    "rating": 4.6,
-    "pictureUrl": "https://airbnbcloneapp.s3.amazonaws.com/1237179fb1b4446fa6ba6d67c0bc2218",
-    "guests": 12,
-    "reviews": 2,
+    "rating": 4.9,
+    "pictureUrl": "https://airbnbcloneapp.s3.amazonaws.com/6816f891f61435eda97fc6b03f273089",
+    "price": 210,
+    "bedrooms": 1,
+    "beds": 2,
+    "baths": 1,
+    "kitchens": 1,
+    "guests": 3,
+    "reviews": 13,
     "wifi": true,
     "air_conditioning": true,
     "parking": true
