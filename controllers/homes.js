@@ -11,10 +11,14 @@ homesRouter.post(
 
 	async (req, res) => {
 		const file = req.file;
-		console.log(file);
+		const body = req.body;
+		console.log(file, body);
 		const result = await uploadFile(file);
 		console.log(result);
-		await homeImage.create({ photoUrl: result.Location });
+		await homeImage.create({
+			photoUrl: result.Location,
+			description: body.description,
+		});
 		res.send({ imagePath: `images/${result.Key}` });
 	}
 );

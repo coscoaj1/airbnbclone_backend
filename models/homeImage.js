@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 
 const homeImageSchema = new mongoose.Schema({
 	photoUrl: String,
+	description: String,
 });
 
 homeImageSchema.set('toJSON', {
