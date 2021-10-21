@@ -3,6 +3,21 @@ const Home = require('../models/home');
 const { uploadFile, getFileStream } = require('./../utils/s3');
 const multer = require('multer');
 const upload = multer({ dest: 'uploads/' });
+const homeImage = require('../models/homeImage');
+
+homesRouter.post(
+	'/homeImage',
+	upload.single('image'),
+
+	async (req, res) => {
+		const file = req.file;
+		console.log(file);
+		const result = await uploadFile(file);
+		console.log(result);
+		await homeImage.create({ photoUrl: result.Location });
+		res.send({ imagePath: `images/${result.Key}` });
+	}
+);
 
 homesRouter.get('/', (request, response) => {
 	Home.find({}).then((homes) => {
