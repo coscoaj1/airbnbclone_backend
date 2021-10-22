@@ -7,6 +7,7 @@ const homesRouter = require('./controllers/homes');
 const logger = require('./utils/logger');
 const mongoose = require('mongoose');
 const requestLogger = require('./utils/middleware');
+const errorHandler = require('./utils/middleware');
 
 logger.info('connecting to', config.MONGODB_URI);
 

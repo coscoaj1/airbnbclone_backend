@@ -9,7 +9,7 @@ homesRouter.post(
 	'/homeImage',
 	upload.single('image'),
 
-	async (req, res) => {
+	async (req, res, next) => {
 		const file = req.file;
 		const body = req.body;
 		console.log(file, body);
@@ -18,18 +18,20 @@ homesRouter.post(
 		await homeImage.create({
 			photoUrl: result.Location,
 			description: body.description,
+			title: body.title,
+			price: body.price,
 		});
 		res.send({ imagePath: `images/${result.Key}` });
 	}
 );
 
-homesRouter.get('/', (request, response) => {
+homesRouter.get('/', (request, response, next) => {
 	Home.find({}).then((homes) => {
 		response.json(homes);
 	});
 });
 
-homesRouter.get('/:id', (request, response) => {
+homesRouter.get('/:id', (request, response, next) => {
 	Home.findById({ _id: request.params.id })
 		.then((home) => {
 			if (home) {
@@ -44,7 +46,7 @@ homesRouter.get('/:id', (request, response) => {
 		});
 });
 
-homesRouter.get('/images/:key', (request, response) => {
+homesRouter.get('/images/:key', (request, response, next) => {
 	const key = request.params.key;
 	const readStream = getFileStream(key);
 
@@ -54,7 +56,7 @@ homesRouter.get('/images/:key', (request, response) => {
 homesRouter.post(
 	'/images',
 	upload.single('image'),
-	async (request, response) => {
+	async (request, response, next) => {
 		const file = request.file;
 		console.log(file);
 		const result = await uploadFile(file);
