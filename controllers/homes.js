@@ -20,6 +20,13 @@ homesRouter.post(
 			description: body.description,
 			title: body.title,
 			price: body.price,
+			bedrooms: body.bedrooms,
+			beds: body.beds,
+			baths: body.baths,
+			kitchens: body.kitchens,
+			wifi: body.wifi,
+			air_conditioning: body.air_conditioning,
+			parking: body.parking,
 		});
 		res.send({ imagePath: `images/${result.Key}` });
 	}
