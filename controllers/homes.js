@@ -20,6 +20,7 @@ homesRouter.post(
 			description: body.description,
 			title: body.title,
 			price: body.price,
+			guests: body.guests,
 			bedrooms: body.bedrooms,
 			beds: body.beds,
 			baths: body.baths,
@@ -27,13 +28,15 @@ homesRouter.post(
 			wifi: body.wifi,
 			air_conditioning: body.air_conditioning,
 			parking: body.parking,
+			rating: body.rating,
+			reviews: body.reviews,
 		});
 		res.send({ imagePath: `images/${result.Key}` });
 	}
 );
 
 homesRouter.get('/', (request, response, next) => {
-	Home.find({}).then((homes) => {
+	homeImage.find({}).then((homes) => {
 		response.json(homes);
 	});
 });
@@ -136,7 +139,8 @@ homesRouter.put('/:id', (request, response, next) => {
 		parking: body.parking,
 	};
 
-	Home.findByIdAndUpdate(request.params.id, home, { new: true })
+	homeImage
+		.findByIdAndUpdate(request.params.id, home, { new: true })
 		.then((savedHome) => {
 			response.json(savedHome);
 		})

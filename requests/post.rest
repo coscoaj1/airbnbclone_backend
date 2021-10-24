@@ -1,9 +1,9 @@
-POST http://localhost:3001/api/homes
+POST http://localhost:3001/api/homes/homeImage
 Content-Type: application/json
 
 {
     "title": "Modern Comfort and Design in Amazing Park!",
-    "description": "Entire Rental Unit",
+    "description": "Entire Rental Test",
     "owner": "Lakehouse Lady",
     "rating": 5,
     "pictureUrl": "https://airbnbcloneapp.s3.amazonaws.com/594d286575a076fc0b883e9435e0010f",
@@ -20,23 +20,27 @@ Content-Type: application/json
 }
 
 ###
-PUT http://localhost:3001/api/homes/616db59baece201984a3fbf7
+PUT http://localhost:3001/api/homes/61756911d033c59035569f8e
 Content-Type: application/json
 
 {
-    "title": "Beach Guest House, Bikes + Jacuzzi",
-    "description": "Entire Guest House in Mission Beach",
-    "owner": "Lakehouse Lady",
-    "rating": 4.9,
-    "pictureUrl": "https://airbnbcloneapp.s3.amazonaws.com/6816f891f61435eda97fc6b03f273089",
-    "price": 210,
+    "photoUrl": "https://airbnbcloneapp.s3.amazonaws.com/736fab2608d160477292ce329123a77a",
+    "description": "Entire Rental Unit",
+    "title": "Modern Comfort and Design in Amazing Park!",
+    "price": 198,
+    "guests": 3,
     "bedrooms": 1,
     "beds": 2,
     "baths": 1,
     "kitchens": 1,
-    "guests": 3,
-    "reviews": 13,
     "wifi": true,
     "air_conditioning": true,
-    "parking": true
-}   
+    "parking": true,
+    "reviews": 17,
+    "rating": 4.9
+  }
+
+###
+
+   "reviews": 86,
+    "rating": 5

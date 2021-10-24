@@ -1,6 +1,5 @@
 GET http://localhost:3001/api/homes
-
 ###
 
 
-GET http://localhost:3001/api/homes/613f19ef4a9323706485d87
+GET http://localhost:3001/api/homeImage/613f19ef4a9323706485d87

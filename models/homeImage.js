@@ -5,6 +5,7 @@ const homeImageSchema = new mongoose.Schema({
 	description: String,
 	title: String,
 	price: Number,
+	guests: Number,
 	bedrooms: Number,
 	beds: Number,
 	baths: Number,
@@ -12,6 +13,8 @@ const homeImageSchema = new mongoose.Schema({
 	wifi: Boolean,
 	air_conditioning: Boolean,
 	parking: Boolean,
+	rating: Number,
+	reviews: Number,
 });
 
 homeImageSchema.set('toJSON', {
